@@ -32,18 +32,18 @@ function ok_hgt(hgt_str::String)
 end
 
 function ok_ecl(ecl_str::String)
-    return ecl_str in Set(["amb", "blu", "brn", "gry", "grn", "hzl", "oth",])
+    return ecl_str in Set(["amb", "blu", "brn", "gry", "grn", "hzl", "oth"])
 end
 
 expected_keys = Dict([
-    ("byr", x->ok_year(x, 1920, 2002)),
-    ("iyr", x->ok_year(x, 2010, 2020)),
-    ("eyr", x->ok_year(x, 2020, 2030)),
+    ("byr", x -> ok_year(x, 1920, 2002)),
+    ("iyr", x -> ok_year(x, 2010, 2020)),
+    ("eyr", x -> ok_year(x, 2020, 2030)),
     ("hgt", ok_hgt),
     ("hcl", ok_hcl),
     ("ecl", ok_ecl),
     ("pid", ok_pid),
-    ("cid", x-> true),
+    ("cid", x -> true),
 ])
 
 function solve_one()

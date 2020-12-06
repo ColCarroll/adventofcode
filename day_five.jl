@@ -1,13 +1,13 @@
-function seat_to_bin(seat_str::String, letters::Tuple{String, String})::String
+function seat_to_bin(seat_str::String, letters::Tuple{String,String})::String
     for (i, letter) in enumerate(letters)
-        seat_str = replace(seat_str, letter=>i-1)
+        seat_str = replace(seat_str, letter => i - 1)
     end
     return seat_str
 end
 
-function parse_ticket(ticket_str::String)::Tuple{Int, Int}
-    row = parse(Int, seat_to_bin(ticket_str[1:7], ("F", "B")), base=2)
-    seat = parse(Int, seat_to_bin(ticket_str[8:10], ("L", "R")), base=2)
+function parse_ticket(ticket_str::String)::Tuple{Int,Int}
+    row = parse(Int, seat_to_bin(ticket_str[1:7], ("F", "B")), base = 2)
+    seat = parse(Int, seat_to_bin(ticket_str[8:10], ("L", "R")), base = 2)
     return (row, seat)
 end
 

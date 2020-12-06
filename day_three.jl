@@ -26,4 +26,3 @@ end
 
 println(count(data, 3, 1))
 println(solve())
-

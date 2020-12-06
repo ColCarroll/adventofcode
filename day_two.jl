@@ -2,7 +2,11 @@ using DataFrames
 import DelimitedFiles
 using CSV
 
-data = DataFrame(CSV.File("data/day_two.txt"; header=["min-max", "char", "pwd"], delim=" "))
+data = DataFrame(CSV.File(
+    "data/day_two.txt";
+    header = ["min-max", "char", "pwd"],
+    delim = " ",
+))
 nums = split.(data[!, "min-max"], "-")
 nums = transpose(hcat(map(x -> parse.(Int, x), nums)...))
 
@@ -13,7 +17,8 @@ data[!, "char"] = rstrip.(data[!, "char"], ':')
 
 data[!, "counts"] = count.(data[!, "char"], data[!, "pwd"])
 
-data[!, "compliant"] = (data[!, "counts"] .>= data[!, "lo"]) .& (data[!, "counts"] .<= data[!, "hi"])
+data[!, "compliant"] =
+    (data[!, "counts"] .>= data[!, "lo"]) .& (data[!, "counts"] .<= data[!, "hi"])
 
 
 println(sum(data[!, "compliant"]))
